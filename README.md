@@ -38,17 +38,22 @@ Taylor Swift is known to change styles in every album she releases. In fact, eac
 Before clustering the songs, I transformed the lyrics into vectors of embeddings using the Word2Vec Google News pre-trained embeddings. After obtaining vectors for each song, an elbow plot helped determine the optimal number of clusters, which turned out to be 4. The k-means algorithm was then employed to create these clusters.
 
 Once I had my clusters, giving each cluster meaning was tricky, especially with nearly 40 to 60 songs in each cluster. However, I did attempt to label each of these clusters.
->*Welcome to New York*
->>This cluster had just one song, “Welcome to New York.”. Naturally, I called this the “Welcome to New York” cluster. 
 
->*Youthful Storytelling*
->>This cluster mostly had songs from Fearless, Speak Now, and Red. These albums are all from Swift’s country music era. These albums collectively offer a lens into life from a youthful >>and somewhat immature perspective, contrasting with her later works' more mature themes and perspectives. 
+> *Welcome to New York*
+>> This cluster had just one song, “Welcome to New York.”. Naturally, I called this the “Welcome to New York” cluster.
 
->*Joy*
->>This next cluster consisted of songs that were mainly from Lover and 1989. It also had the highest average joy emotion score compared to all the other clusters, which makes sense >>since, according to Figure 3,  Lover and 1989 had the highest average score for joy.
+> *Youthful Storytelling*
+>> This cluster mostly had songs from Fearless, Speak Now, and Red. These albums are all from Swift’s country music era. These albums collectively offer a lens into life from a
+>> youthful >>and somewhat immature perspective, contrasting with her later works' more mature themes and perspectives. 
 
->*Into the Woods*
->>This final cluster had the highest number of songs from folklore and evermore. These albums stand out starkly from the rest of Swift’s discography. The writing style takes a more >>poetic and allegorical tone, diverging from Swift’s earlier work, which consisted of more straightforward narratives. Given the frequent references to wooded, mountainous, and ?>>mysterious landscapes in these albums, I found the label “Into the Woods” fitting for this cluster.
+> *Joy*
+>> This next cluster consisted of songs that were mainly from Lover and 1989. It also had the highest average joy emotion score compared to all the other clusters, which makes sense
+>> since, according to Figure 3,  Lover and 1989 had the highest average score for joy.
+
+> *Into the Woods*
+>> This final cluster had the highest number of songs from folklore and evermore. These albums stand out starkly from the rest of Swift’s discography. The writing style takes a more
+>> poetic and allegorical tone, diverging from Swift’s earlier work, which consisted of more straightforward narratives. Given the frequent references to wooded, mountainous, and
+>> mysterious landscapes in these albums, I found the label “Into the Woods” fitting for this cluster.
 
 ## Future Analysis
 Looking ahead, I am interested in exploring the clusters I created further to uncover deeper means. However, it’s important to acknowledge that while sentiment analysis and clustering provide intriguing insights into Taylor Swift’s music, they fall short of capturing the full musical experience, particularly because they don’t consider production elements. 
