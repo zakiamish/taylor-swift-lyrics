@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# =============================================================================
-# title: taylor swift og lyrics analytics
-# created by: zakia 
-# date: 11/24/23
-# =============================================================================
-
 # =============================================================================
 # ################################## imports ##################################
 # =============================================================================
@@ -35,7 +27,7 @@ import text2emotion as te
 # ################################# get data ##################################
 # =============================================================================
 
-allLyrics = pd.read_csv('/Users/zakia/Desktop/Fall 3/misc/Data Column Project/taylorswiftLyrics.csv')
+allLyrics = pd.read_csv('taylorswiftdata')
 
 # =============================================================================
 # ############################### preprocessing ###############################
@@ -79,11 +71,7 @@ def removeStop(txt):
     
     return words
 
-#stemming
-
-
 allLyrics['Lyrics'] = allLyrics['Lyrics'].apply(lambda txt: removeStop(txt))
-
 
 # =============================================================================
 # ################################# clustering ################################
@@ -145,7 +133,6 @@ labels = kmeans.fit_predict(vecmatrix)
 
 #plot
 plt.scatter(vecmatrix[:, 0], vecmatrix[:, 1], c=labels, cmap='viridis', s=50, alpha=0.5)
-#plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], c='red', marker='', s=200, label='Cluster Centers')
 plt.title('KMeans Clustering')
 plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
@@ -187,21 +174,9 @@ def sent(txt):
 scores = []
 emotions = []
 
-
-
 test = allLyrics['Lyrics'][0]
 print(te.get_emotion(test))
 
-
-try:
-    # Assuming 'test' contains your lyrics
-    test = allLyrics['Lyrics'][0]
-    emotion_dict = te.get_emotion(test)
-    print(emotion_dict)
-except RecursionError as e:
-    print(f"RecursionError: {e}")
-    
-    
 print(NRCLex(test).raw_emotion_scores)
 
 
@@ -212,13 +187,6 @@ for lyric in allLyrics['Lyrics']:
     emo = NRCLex(lyric).raw_emotion_scores
     
     emotions.append(emo)
-    
-    
-
-# =============================================================================
-# test = NRCLex(allLyrics['Lyrics'][0]).raw_emotion_scores
-# test['anger']
-# =============================================================================
 
 #seperate emotion scores
 allLyrics['Emotions'] = emotions
@@ -232,24 +200,5 @@ allLyrics = pd.concat([allLyrics, allEmotions],
 
 allLyrics = allLyrics.fillna(0)
 
-#bin emotion scores
-uniqueGenres = allLyrics['Genre'].unique()
-
 allLyrics2 = allLyrics.drop(columns = 'Emotions')
 
-
-countryEmotions = []
-popEmotions = []
-alternativeEmotions = []
-
-for i in uniqueGenres:
-    for j in range(len(allLyrics2)):
-        if allLyrics2.loc[j,'Genre'] == 'Country':
-            countryEmotions.append(allLyrics2.iloc[j])
-        
-        
-
-allLyrics.iloc[0]
-
-
-allLyrics2.to_csv('/Users/zakia/Desktop/Fall 3/misc/Data Column Project/allLyrics.csv', index = False)
